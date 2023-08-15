@@ -74,10 +74,24 @@ const getSinglePost = async (req: Request, res: Response) => {
   }
 };
 
+const aggregateAndGrouping = async (req: Request, res: Response) => {
+  try {
+    const result = await PostService.aggregateAndGrouping();
+    res.send({
+      success: true,
+      message: "result successful",
+      data: result,
+    });
+  } catch (error) {
+    res.send(error);
+  }
+};
+
 export const PostController = {
   updatePost,
   createPost,
   getAllPosts,
   getSinglePost,
   deletePost,
+  aggregateAndGrouping,
 };
